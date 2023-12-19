@@ -12,7 +12,6 @@
 
   <style>
     body {
-      background-image: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
       font-family: Arial, sans-serif;
       margin: 0;
     }
@@ -74,43 +73,84 @@
     button[type="submit"]:hover {
       background-color: #2980b9;
     }
-
-    footer {
+    .mt-50{
       margin-top: 50px;
-      padding-top: 15px;
-      border-top: 1px solid #ccc;
+    }
+    .message-container{
+      background-image: url(../../../1675210248.jpg);
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background-position: top;
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: relative;
+    height: 250px;
     }
 
-    footer p,
-    footer ul {
-      margin-bottom: 0;
-      list-style: none;
+    .lead{
+      position: absolute;
+    top: 58px;
+    width: 50%;
+    text-align: justify;
+    padding: 46px;
+    font-size: 18px;
     }
+    footer{
+      background: linear-gradient(rgba(0, 0, 0, .9), rgba(0, 0, 0, .9)), url(../../../carousel-bg-1.jpg) center center no-repeat;
 
-    footer ul li {
-      display: inline-block;
-      margin-right: 10px;
+    background-size: cover;
+    height: 100%;
+    color: white !important;
+    position: absolute;
+    width: 100%;
+    height: 77px;
+    border-top: 1px solid #ccc;
     }
-
-    footer ul li a {
-      text-decoration: none;
-      color: #333;
+    footer p{
+      color: white !important;
+    }
+    .booking-card{
+      border-radius: 29px;
+    margin-top: 50px;
+    padding: 34px;
     }
   </style>
 </head>
 
 <body class="bg-light">
-
-  <div class="container">
+    <!-- Navbar Start -->
+    <nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
+      <a href="index.html" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
+          <h2 class="m-0 text-primary">
+              <img src="../../../logo.jpg" alt="TheCarSpa" />
+          </h2>
+      </a>
+      <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+          <div class="navbar-nav ms-auto p-4 p-lg-0">
+              <a href="/" class="nav-item nav-link active">Home</a>
+              <a href="/about" class="nav-item nav-link">About</a>
+              <a href="/TheCarSpa/Login/Booking/checkout" class="nav-item nav-link" id="book">Booking</a>
+              <a href="/ClientTestimonials" class="nav-item nav-link">Testimonial</a>
+          </div>
+          <h5 class=" mr-20 px-lg-2 d-none d-lg-block"><a href="/TheCarSpa/Login" id="login-register"><i
+                      class="fa fa-user"></i></a></h5>
+          <h5 class=" mr-20 px-lg-2 " id="profile"><a href="profile.html" id="profile-name"></a></h5>
+      </div>
+  </nav>
+  <!-- Navbar End -->
+  <div class="container mt-50">
     <main>
       <div class="message-container text-center">
-        <img class="d-block mx-auto mb-4" src="carousel-2.png" alt="" width="72" height="57">
-        <h2>Checkout form</h2>
-        <p class="lead">Enter your information below and click on continue checkout to confirm your order. You will
-          receive a message upon confirmation</p>
+        <!-- <img class="d-block mx-auto mb-4" src="../../../1675210248.jpg" alt="" width="72" height="57"> -->
+        <!-- <h2>Book your Service</h2> -->
+        <p class="lead">
+          To book your car service, please fill out the online form on our website. Your input is crucial for a seamless process. Thank you for choosing our services!</p>
       </div>
 
-      <div class="mt-4">
+     <div class="card booking-card">
         <h4 class="mb-3">Order Info</h4>
         <form action="/TheCarSpa/Login/Booking/checkout/submit" method="POST" id="submit client">
          
@@ -167,27 +207,25 @@
     
           </div>
     
-          <hr class="my-4">
-    
-          <hr class="my-4">
-    
-    
-          <hr class="my-4">
 
           <button class="btn btn-primary btn-lg" type="submit">Continue to checkout</button>
         </form>
-      </div>
+      
+     </div>
     </main>
+  </div>
 
     <footer class="my-5 pt-5 text-muted text-center text-small">
-      <p class="mb-1">&copy; 2017–2021 The CarSpa</p>
-      <ul class="list-inline">
-        <li class="list-inline-item"><a href="">Privacy</a></li>
-        <li class="list-inline-item"><a href="">Terms</a></li>
-        <li class="list-inline-item"><a href="">Support</a></li>
-      </ul>
+      <p class="mb-1">&copy; <span id="year"></span> The CarSpa</p>
+  
     </footer>
-  </div>
+ 
+
+  <script>
+    const date=new Date().getFullYear()
+    const year=document.getElementById("year")
+    year.innerHTML=date
+  </script>
 
 </body>
 
