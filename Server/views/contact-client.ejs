@@ -7,64 +7,92 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            text-align: center;
-            padding: 50px;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #019bba, #b3ffbc);
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 1px;
+            justify-content: center;
+            height: 100vh;
+            padding: 40px;
+            box-sizing: border-box;
         }
 
         h2 {
-            color: #333;
+            color: #fff;
+            font-size: 50px;
+            margin-bottom: 30px;
+        }
+        .hadx{
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            
         }
 
         .client-info {
+            margin-bottom: 40px;
+            color: #fff;
+            font-size: 40px;
+        }
+
+        .btn-contact,
+        .btn-get-request {
+            padding: 20px 40px;
+            font-size: 24px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s;
             margin-bottom: 30px;
+            width: 250px;
+            text-decoration: none;
+            display: block;
+            text-align: center;
         }
 
         .btn-contact {
-            padding: 20px 40px; /* Increased padding for the WhatsApp button */
-            font-size: 24px; /* Increased font size for the WhatsApp button */
-            border: none;
-            border-radius: 5px;
-            background-color: #25d366;
+            background-color: #0575e6;
             color: #fff;
-            text-decoration: none;
-            transition: background-color 0.3s ease;
-            display: block; /* Make the button full-width */
-            margin-bottom: 20px; /* Added some space between buttons */
         }
 
         .btn-contact:hover {
-            background-color: #128c7e;
+            background-color: #055c9d;
         }
 
         .btn-get-request {
-            padding: 20px 40px; /* Increased padding for the Get Request button */
-            font-size: 24px; /* Increased font size for the Get Request button */
-            border: none;
-            border-radius: 5px;
-            background-color: #3498db;
+            background-color: #00d2ff;
             color: #fff;
-            text-decoration: none;
-            transition: background-color 0.3s ease;
-            display: block; /* Make the button full-width */
         }
 
         .btn-get-request:hover {
-            background-color: #2980b9;
+            background-color: #00a1c5;
         }
     </style>
 </head>
 
-
 <body>
-    <h2>Order Confirmation</h2>
-    <div class="client-info">
-        <p>You have confirmed the order of <strong><%= client_name1 %></strong>.</p>
-        <p>Contact them below:</p>
+    <div class="hadx">
+        <h2 >Order Confirmation</h2> 
     </div>
-    <a href="<%= whatsapp_link %>" class="btn-contact" target="_blank">Contact via WhatsApp</a>
 
-    <!-- Button to send a GET request -->
-    <a href="/TheCarSpa/Login/Manager/SetAvailability" class="btn-get-request">Set Availability</a>
+    <div class="container">
+        <div class="client-info">
+            <p>You have confirmed the order of <strong><%= ClientName %></strong>.</p>
+            <p>Contact them below:</p>
+        </div>
+        <a href="<%= whatsapp_link %>" class="btn-contact" target="_blank">Contact via WhatsApp</a>
+
+        <!-- Form to send a POST request -->
+        <form action="/TheCarSpa/Login/Manager/SetAvailability" method="POST">
+            <button type="submit" class="btn-get-request">Set Availability</button>
+        </form>
+    </div>
 </body>
 
 </html>

@@ -72,7 +72,13 @@
 </head>
 <body>
     <h2>HTML TABLE DATA SEARCH</h2>
-    <form action="/TheCarSpa/Login/Manager" method="get">
+    <div style="text-align: center; margin-top: 20px;">
+        <a href="/TheCarSpa/Login/Manager" style="text-decoration: none;">
+            <button style="padding: 10px 20px; font-size: 16px; background-color: #3498db; color: #fff; border: none; border-radius: 4px; cursor: pointer;">Back to Manager Main Page</button>
+        </a>
+    </div>
+
+    <form action="/TheCarSpa/Login/Manager/view-pending-orders/contactClient" method="post">
         <table>
             <thead>
                 <tr>
@@ -101,7 +107,11 @@
                     <td>
                         <!-- Button for action -->
                         <form action="/TheCarSpa/Login/Manager/view-pending-orders/contactClient" method="post"> <!-- Replace with your actual route -->
-                            <input type="hidden" name="car_brand" value="<%= user.BookingId %>">
+                            <input type="hidden" name="BookingId" value="<%= user.BookingId %>">
+                            <input type="hidden" name="ClientPhone" value="<%= user.ClientPhone %>">
+                            <input type="hidden" name="ClientAddress" value="<%= user.ClientAddress %>">
+                            <input type="hidden" name="ClientName" value="<%= user.ClientName %>">
+
                             <button type="submit" class="btn btn-primary">ACCEPT</button>
                         </form>
                     </td>
@@ -110,12 +120,7 @@
             </tbody>
         </table>
     </form>
-    <div style="text-align: center; margin-top: 20px;">
-        <a href="/TheCarSpa/Login/Manager" style="text-decoration: none;">
-            <button style="padding: 10px 20px; font-size: 16px; background-color: #3498db; color: #fff; border: none; border-radius: 4px; cursor: pointer;">Back to Manager Main Page</button>
-        </a>
-    </div>
-
+    
 
     <h3 style="text-align: center;">WHAT THIS PAGE DOES</h2>
 

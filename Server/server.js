@@ -64,7 +64,7 @@ app.use(express.static(path.join(__dirname, "js")));
 const connection = await mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    password: 'root',
+    password: 'HadiAliAdam128!',
     database: 'cleaningservicemanagementsystem' // Specify the database name
 });
 
@@ -118,11 +118,11 @@ app.get("/TheCarSpa/Login/Booking", checkAuthenticated, (req, res) => {
     res.render("ClientUI.ejs", { name: req.user.ClientName });
 });
 
-app.get('/TheCarSpa/Login', checkNotAuthenticated, (req, res) => {
+app.get('Login', checkNotAuthenticated, (req, res) => {
     res.render("login.ejs");
 });
 
-app.get('/TheCarSpa/Register', checkNotAuthenticated, (req, res) => {
+app.get('Register', checkNotAuthenticated, (req, res) => {
     res.render("register.ejs");
 });
 
@@ -317,12 +317,16 @@ app.get('/TheCarSpa/Login/Booking/checkout/submit/accept', async (req, res) => {
 });
 
 
-app.get('/TheCarSpa/Login/Manager', async (req, res) => {
+app.post('/TheCarSpa/Login/Manager', async (req, res) => {
     res.render('Manager.ejs')
 
 
 });
+app.get('/TheCarSpa/Login/Manager', async (req, res) => {           // for testing purposes 
+    res.render('Manager.ejs')
 
+
+});
 
 app.post('/TheCarSpa/Login/Manager/confirm-testimonials', async (req, resp) => {
     const { TestimonialId, ClientName, TestimonialReview } = req.body; // Get values from form submission
@@ -353,7 +357,7 @@ app.post('/TheCarSpa/Login/Manager/confirm-testimonials', async (req, resp) => {
 });
 
 
-app.get('/TheCarSpa/Login/Manager/view-pending-testimonials', async (req, res) => {
+app.post('/TheCarSpa/Login/Manager/view-pending-testimonials', async (req, res) => {
     try {
         const [rows] = await connection.execute("select ClientName,TestimonialId,CreatedDate,TestimonialReview from testimonial natural join client where statusId=1");
         res.render('pending-testimonials', {
@@ -367,7 +371,36 @@ app.get('/TheCarSpa/Login/Manager/view-pending-testimonials', async (req, res) =
 })
 
 
-app.get('/TheCarSpa/Login/Manager/view-pending-orders', async (req, res) => {
+//app.get('/TheCarSpa/Login/Manager/view-pending-orders', async (req, res) => {
+
+    /*  let query = await connection.query("SELECT * from pendingbookings", (err, rows) => {
+          if (err) throw err;
+          res.render('pending-orders', {
+              title: 'PENDING TESTIMONIALS',
+              users: rows
+          })
+     })*/
+    /*   try {
+           const [rows] = await connection.execute("SELECT * FROM pendingbookings");
+           res.render('pending-orders', {
+               title: 'PENDING TESTIMONIALS',
+               users: rows
+           });*/
+
+
+  //  try {
+ //  //     const [rows] = await connection.execute("SELECT  * FROM booking b ,client c,  servicetype s where c.Clientid=B.ClientId and s.ServiceTypeId=b.Servicetypeid and statusId=1");
+  //      res.render('pending-orders', {
+   //         title: 'PENDING TESTIMONIALS',
+    //        users: rows
+     //   })
+
+ //   } catch (error) {
+ //       console.error('Error fetching pending bookings:', error);
+ //       res.status(500).send('Error fetching pending bookings');
+ //   }
+//})\
+app.post('/TheCarSpa/Login/Manager/view-pending-orders', async (req, res) => {
 
     /*  let query = await connection.query("SELECT * from pendingbookings", (err, rows) => {
           if (err) throw err;
@@ -396,20 +429,25 @@ app.get('/TheCarSpa/Login/Manager/view-pending-orders', async (req, res) => {
         res.status(500).send('Error fetching pending bookings');
     }
 })
-
 app.post('/TheCarSpa/Login/Manager/view-pending-orders/contactClient', async (req, res) => {
-    const { booking_id, client_id, client_address, car_brand, car_make, phone_number, booking_date, service_type } = req.body; // Get values from form submission
+    /*const { booking_id, client_id, client_address, car_brand, car_make, phone_number, booking_date, service_type } = req.body; // Get values from form submission
     var [client_name] = await connection.query(`select name from clients where id=12`, [client_id]);
     const client_name1 = client_name[0].name
     console.log(client_name1)
-    const whatsapp_link = "https://wa.me/" + phone_number;
+    const whatsapp_link = "https://wa.me/" + phone_number;*/
 
-    res.render('contact-client.ejs', { whatsapp_link, client_name1 }); // Redirect back to the previous-orders page or another route
+    const{BookingId,ClientPhone,ClientAddress,ClientName}=req.body;
+    console.log(req.body)
+
+    const whatsapp_link = "https://wa.me/" + "+961"+ClientPhone;
+    await connection.query(`update booking set statusId=2 where BookingID=?;`, [BookingId]);
+
+res.render('contact-client.ejs', { whatsapp_link, ClientName }); 
 
 
 
 });
-app.get('/TheCarSpa/Login/Manager/SetAvailability', async (req, res) => {
+app.post('/TheCarSpa/Login/Manager/SetAvailability', async (req, res) => {
 
     var [rows] = await connection.execute("SELECT * FROM TEAM");
 
@@ -429,8 +467,7 @@ app.post('/TheCarSpa/Login/Manager/SetAvailability/Change', async (req, resp) =>
     else {
         await connection.query(`UPDATE team SET availability="T" WHERE teamID = ?`, [TeamId])
     }
-
-    resp.redirect('/TheCarSpa/Login/Manager/SetAvailability'); // Redirect back to the previous-orders page or another route
+    resp.redirect(307, '/TheCarSpa/Login/Manager/SetAvailability');
 });
 
 app.listen(port, () => {

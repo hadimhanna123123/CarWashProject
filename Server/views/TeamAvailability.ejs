@@ -109,14 +109,19 @@
     </style>
 </head>
 <body>
-     <a href="/TheCarSpa/Login/Manager/SetAvailability/Change" class="top-right-button">Go to Specific Page</a>
-
+    <div style="text-align: right; margin-top: 20px;">
+        <a href="/TheCarSpa/Login/Manager" style="text-decoration: none;">
+            <button style="padding: 10px 20px; font-size: 16px; background-color: #3498db; color: #fff; border: none; border-radius: 4px; cursor: pointer;">Back to Manager Main Page</button>
+        </a>
+    </div>
+    
     <h2>COnfirm Testimonials</h2>
     <form action="/TheCarSpa/Login/Manager/SetAvailability/Change" method="POST">
         <table>
             <thead>
                 <tr>
                     <th>Team ID</th>
+                    <th>Team Name</th>
                     <th>Availablility</th>
                     <th>Set Availability</th>
                 </tr>
@@ -143,11 +148,7 @@
             </tbody>
         </table>
     </form>
-    <div style="text-align: center; margin-top: 20px;">
-        <a href="/TheCarSpa/Login" style="text-decoration: none;">
-            <button style="padding: 10px 20px; font-size: 16px; background-color: #3498db; color: #fff; border: none; border-radius: 4px; cursor: pointer;">Back to Main Page</button>
-        </a>
-    </div>
+ 
 
     <h3 style="text-align: center;">WHAT THIS PAGE DOES</h2>
 
@@ -155,6 +156,15 @@
     <p style="text-align: center; font-size: 18px; color: #666; margin-bottom: 30px;">
         This page allows you to confirm testimonials for the Car Wash Manager Interface. Review the available testimonials and change their availability status as needed.
     </p>
+<script>
+    function submitForm(url) {
+    const form = document.createElement('form');
+    form.method = 'POST';
+    form.action = url;
 
+    form.submit();
+}
+
+</script>
 </body>
 </html>

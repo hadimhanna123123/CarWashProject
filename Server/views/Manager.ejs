@@ -84,14 +84,24 @@
                 <h3>Welcome to the Car Wash Manager Interface!</h3>
             </div>
             <div class="card-body">
-                <div class="text-center manager-buttons">
-                    <p>Manage orders and testimonials:</p>
+            <div class="text-center manager-buttons">
+                  <!-- Bootstrap and other scripts 
+      <p>Manage orders and testimonials:</p>
                     <a href="/TheCarSpa/Login/Manager/view-pending-orders" class="btn btn-success btn-custom btn-blue">Confirm
                         Orders</a>
                     <a href="/TheCarSpa/Login/Manager/view-pending-testimonials"
-                        class="btn btn-success btn-custom btn-blue">Confirm Testimonials</a>
+                        class="btn btn-success btn-custom btn-blue" >Confirm Testimonials</a>
                         <a href="/TheCarSpa/Login/Manager/SetAvailability"
-                        class="btn btn-success btn-custom btn-blue">Set Availability</a>
+                        class="btn btn-success btn-custom btn-blue">Set Availability</a>-->
+                        <div class="card-body">
+                            <div class="text-center manager-buttons">
+                                <p>Manage orders and testimonials:</p>
+                                <button onclick="submitForm('/TheCarSpa/Login/Manager/view-pending-orders')" class="btn btn-success btn-custom btn-blue">Confirm Orders</button>
+                                <button onclick="submitForm('/TheCarSpa/Login/Manager/view-pending-testimonials')" class="btn btn-success btn-custom btn-blue">Confirm Testimonials</button>
+                                <button onclick="submitForm('/TheCarSpa/Login/Manager/SetAvailability')" class="btn btn-success btn-custom btn-blue">Set Availability</button>
+                            </div>
+                        </div>
+                        
                 </div>
             </div>
         </div>
@@ -100,6 +110,18 @@
     <!-- Bootstrap and other scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+
+function submitForm(url) {
+    const form = document.createElement('form');
+    form.method = 'POST';
+    form.action = url;
+
+    document.body.appendChild(form);
+    form.submit();
+}
+
+    </script>
 </body>
 
 </html>
