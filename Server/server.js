@@ -11,8 +11,7 @@ const session = require("express-session");
 const passport = require("passport");
 const methodOverride = require("method-override");
 
-
-
+var manager = 0;
 function initializePassport(passport, getUserByEmail, getUserById) {
     const authenticateUser = async (ClientEmail, ClientPassword, done) => {
         const user = await getUserByEmail(ClientEmail);
@@ -21,10 +20,12 @@ function initializePassport(passport, getUserByEmail, getUserById) {
             return done(null, false, { message: 'No user with that email' });
         }
         console.log(ClientPassword)
-        console.log(user.ClientPassword)
-        const passmatch = await bcrypt.compare(ClientPassword, user.ClientPassword)
+        const pass = user.ClientPassword ? user.ClientPassword : user.Passwords;
+        const passmatch = await bcrypt.compare(ClientPassword, pass)
         try {
             if (passmatch) {
+                if (user.Passwords)
+                    manager = 1;
                 return done(null, user);
             } else {
                 return done(null, false, { message: 'Password incorrect' });
@@ -37,7 +38,7 @@ function initializePassport(passport, getUserByEmail, getUserById) {
     passport.use(new LocalStrategy({ usernameField: 'email' }, authenticateUser));
 
     // Serialize user to store in the session
-    passport.serializeUser((user, done) => done(null, user.ClientId));
+    passport.serializeUser((user, done) => done(null, user.ClientId ? user.ClientId : user.ManagerId));
 
     // Deserialize user to fetch from the session
     passport.deserializeUser(async (ClientId, done) => {
@@ -78,12 +79,14 @@ function getRandomInt(max) {
 initializePassport(
     passport,
     async email => {
-        const [rows] = await connection.execute('SELECT * FROM client WHERE ClientEmail = ?', [email]);
-        return rows[0];
+        const [rows_c] = await connection.execute('SELECT * FROM client WHERE ClientEmail = ?', [email]);
+        const [rows_m] = await connection.execute('SELECT * FROM manager WHERE ManagerEmail = ?', [email]);
+        return rows_c[0] ? rows_c[0] : rows_m[0];
     },
     async id => {
-        const [rows] = await connection.execute('SELECT * FROM client WHERE ClientId = ?', [id]);
-        return rows[0];
+        const [rows_c] = await connection.execute('SELECT * FROM client WHERE ClientId = ?', [id]);
+        const [rows_m] = await connection.execute('SELECT * FROM manager WHERE ManagerId = ?', [id]);
+        return rows_c[0] ? rows_c[0] : rows_m[0];
     }
 );
 
@@ -109,10 +112,13 @@ const servicesMap = servicename[0].reduce((map, service) => {
 console.log(servicesMap)
 
 app.post("/TheCarSpa/Login", checkNotAuthenticated, passport.authenticate('local', {
-    successRedirect: "/TheCarSpa/Login/Booking",
     failureRedirect: "/TheCarSpa/login",
     failureFlash: true
-}));
+}),
+    (req, res) => {
+        res.redirect(manager == 1 ? "/TheCarSpa/Login/Manager" : "/TheCarSpa/Login/Booking");
+    }
+);
 
 app.get("/TheCarSpa/Login/Booking", checkAuthenticated, (req, res) => {
     res.render("ClientUI.ejs", { name: req.user.ClientName });
