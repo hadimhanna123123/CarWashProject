@@ -65,7 +65,7 @@ app.use(express.static(path.join(__dirname, "js")));
 const connection = await mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    password: 'HadiAliAdam128!',
+    password: 'root',
     database: 'cleaningservicemanagementsystem' // Specify the database name
 });
 
