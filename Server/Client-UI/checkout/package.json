@@ -1,0 +1,14 @@
+{
+  "name": "checkout",
+  "version": "1.0.0",
+  "description": "",
+  "main": "form-handling.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "devStart":"nodemon form-handling.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

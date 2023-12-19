@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <title>Checkout example · Bootstrap v5.0</title>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+  <style>
+    body {
+      background-image: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
+      font-family: Arial, sans-serif;
+      margin: 0;
+    }
+
+    .container {
+      max-width: 800px;
+    }
+
+    .message-container {
+      padding: 40px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      background-color: rgba(255, 255, 255, 0.9);
+    }
+
+    h2 {
+      color: #2c3e50;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    p {
+      color: #555;
+      margin-bottom: 20px;
+    }
+
+    .form-label {
+      font-weight: bold;
+      color: #333;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    select,
+    button[type="submit"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      transition: border-color 0.3s;
+    }
+
+    input[type="text"]:focus,
+    input[type="number"]:focus,
+    select:focus {
+      border-color: #3498db;
+      outline: none;
+    }
+
+    button[type="submit"] {
+      background-color: #3498db;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    button[type="submit"]:hover {
+      background-color: #2980b9;
+    }
+
+    footer {
+      margin-top: 50px;
+      padding-top: 15px;
+      border-top: 1px solid #ccc;
+    }
+
+    footer p,
+    footer ul {
+      margin-bottom: 0;
+      list-style: none;
+    }
+
+    footer ul li {
+      display: inline-block;
+      margin-right: 10px;
+    }
+
+    footer ul li a {
+      text-decoration: none;
+      color: #333;
+    }
+  </style>
+</head>
+
+<body class="bg-light">
+
+  <div class="container">
+    <main>
+      <div class="message-container text-center">
+        <img class="d-block mx-auto mb-4" src="carousel-2.png" alt="" width="72" height="57">
+        <h2>Checkout form</h2>
+        <p class="lead">Enter your information below and click on continue checkout to confirm your order. You will
+          receive a message upon confirmation</p>
+      </div>
+
+      <div class="mt-4">
+        <h4 class="mb-3">Order Info</h4>
+        <form action="/TheCarSpa/Login/Booking/checkout/submit" method="POST" id="submit client">
+         
+          <div class="row g-3">
+            <div class="col-sm-6">
+              <label for="firstName" class="form-label">Car Brand and Build</label>
+              <input type="text" class="form-control" id="firstName" placeholder="" name="carbrand" value="<%= carbrandd %>" required>
+              <div class="invalid-feedback">
+                Valid Car Brand and Build Required
+              </div>
+            </div>
+    
+            <div class=" col-sm-6">
+              <label for="lastName" class="form-label">Special Requests</label>
+              <input type="number" class="form-control" id="lastName" name="mightuseinfuture" value="2023">
+
+            </div>
+    
+            <div class="mt-3 col-12">
+              <label for="phonenum" class="form-label">PhoneNum</label>
+              <div class="input-group has-validation">
+                <span class="input-group-text">+961</span>
+                <input type="number" class="form-control" id="phonenum" placeholder="phone Number" name="phonenum" value="<%= user.ClientPhone %>" required>
+                <div class="invalid-feedback">
+                  Your Phone Number is required.
+                </div>
+              </div>
+            </div>
+    
+            <div class="mt-3 col-12">
+              <label for="address" class="form-label">Address</label>
+              <input type="text" name="address" class="form-control" id="address" value="<%=user.ClientAddress%>" required>
+              <div class="invalid-feedback">
+                Please enter your address.
+              </div>
+            </div>
+    
+ 
+    
+            <div class="mt-3 col-md-5">
+              <label for="Service" class="form-label">Service</label>
+              <select class="form-select" id="service" name="service" required>
+                <option value="">Choose a service</option>
+                <option value="Basic Detailing">Basic Detailing</option>
+                <option value="Premium Detailing">Premium Detailing</option>
+                <option value="Full Package">Full Package</option>
+    
+              </select>
+              <div class="invalid-feedback">
+                Please select a valid country.
+              </div>
+            </div>
+    
+    
+          </div>
+    
+          <hr class="my-4">
+    
+          <hr class="my-4">
+    
+    
+          <hr class="my-4">
+
+          <button class="btn btn-primary btn-lg" type="submit">Continue to checkout</button>
+        </form>
+      </div>
+    </main>
+
+    <footer class="my-5 pt-5 text-muted text-center text-small">
+      <p class="mb-1">&copy; 2017–2021 The CarSpa</p>
+      <ul class="list-inline">
+        <li class="list-inline-item"><a href="">Privacy</a></li>
+        <li class="list-inline-item"><a href="">Terms</a></li>
+        <li class="list-inline-item"><a href="">Support</a></li>
+      </ul>
+    </footer>
+  </div>
+
+</body>
+
+</html>

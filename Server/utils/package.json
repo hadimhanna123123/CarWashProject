@@ -1,0 +1,21 @@
+{
+  "name": "the-car-spa",
+  "version": "1.0.0",
+  "main":"client-runner.js",
+  "description": "For test ",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+   , "devStart":" nodemon client-runner"
+  },
+  "dependencies": {
+    "express": "latest"
+    
+  }
+  ,
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon":"^2.0.12"
+  }
+  
+}

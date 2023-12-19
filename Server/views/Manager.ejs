@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Car Wash Manager Interface</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Update the styles -->
+<style>
+    /* Modify colors */
+    body {
+        background-color: #f4f4f4;
+        color: #333;
+    }
+
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    .card {
+        border-radius: 15px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        max-width: 600px;
+        width: 100%;
+        background-color: #fff; /* White background */
+    }
+
+    .card-header {
+        background-color: #3498db; /* Header color */
+        color: white;
+        border-radius: 15px 15px 0 0;
+        text-align: center;
+        padding: 20px;
+    }
+
+    .card-body {
+        padding: 30px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .manager-buttons {
+        text-align: center;
+        margin-bottom: 30px;
+        width: 100%;
+    }
+
+    /* Update button styles */
+    .btn-custom {
+        font-size: 18px;
+        padding: 12px 25px;
+        border-radius: 25px;
+        margin-bottom: 15px;
+    }
+
+    .btn-set-availability {
+        font-size: 18px;
+        padding: 12px 40px;
+        border-radius: 25px;
+        margin-top: 20px;
+        background-color: #f39c12; /* Different color for set availability */
+        color: white;
+        border: none;
+    }
+    .btn-blue{
+        background-color: #3498db;
+        border-radius: 25px;
+        border: none;
+
+
+    }
+</style>
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <h3>Welcome to the Car Wash Manager Interface!</h3>
+            </div>
+            <div class="card-body">
+                <div class="text-center manager-buttons">
+                    <p>Manage orders and testimonials:</p>
+                    <a href="/TheCarSpa/Login/Manager/view-pending-orders" class="btn btn-success btn-custom btn-blue">Confirm
+                        Orders</a>
+                    <a href="/TheCarSpa/Login/Manager/view-pending-testimonials"
+                        class="btn btn-success btn-custom btn-blue">Confirm Testimonials</a>
+                        <a href="/TheCarSpa/Login/Manager/SetAvailability"
+                        class="btn btn-success btn-custom btn-blue">Set Availability</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap and other scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>
