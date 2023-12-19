@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Order Confirmation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        .client-info {
+            margin-bottom: 30px;
+        }
+
+        .btn-contact {
+            padding: 20px 40px; /* Increased padding for the WhatsApp button */
+            font-size: 24px; /* Increased font size for the WhatsApp button */
+            border: none;
+            border-radius: 5px;
+            background-color: #25d366;
+            color: #fff;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+            display: block; /* Make the button full-width */
+            margin-bottom: 20px; /* Added some space between buttons */
+        }
+
+        .btn-contact:hover {
+            background-color: #128c7e;
+        }
+
+        .btn-get-request {
+            padding: 20px 40px; /* Increased padding for the Get Request button */
+            font-size: 24px; /* Increased font size for the Get Request button */
+            border: none;
+            border-radius: 5px;
+            background-color: #3498db;
+            color: #fff;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+            display: block; /* Make the button full-width */
+        }
+
+        .btn-get-request:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+
+
+<body>
+    <h2>Order Confirmation</h2>
+    <div class="client-info">
+        <p>You have confirmed the order of <strong><%= client_name1 %></strong>.</p>
+        <p>Contact them below:</p>
+    </div>
+    <a href="<%= whatsapp_link %>" class="btn-contact" target="_blank">Contact via WhatsApp</a>
+
+    <!-- Button to send a GET request -->
+    <a href="/TheCarSpa/Login/Manager/SetAvailability" class="btn-get-request">Set Availability</a>
+</body>
+
+</html>

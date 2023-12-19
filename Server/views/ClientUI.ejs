@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Car Wash Testimonials and Orders</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+
+
+        .card {
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-header {
+            background-color: #17a2b8;
+            color: white;
+            border-radius: 15px 15px 0 0;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .card-body {
+            background-color: #fff;
+            padding: 30px;
+        }
+
+        .btn-custom {
+            margin: 10px;
+            padding: 15px 25px;
+            border-radius: 20px;
+            font-size: 18px;
+            transition: background-color 0.3s;
+        }
+
+        .btn-custom:hover {
+            background-color: #0d6efd;
+        }
+
+        .testimonial-form {
+            margin-top: 30px;
+        }
+
+        .testimonial-submit {
+            margin-top: 15px;
+        }
+
+        .testimonial-submit:hover {
+            background-color: #198754;
+        }
+
+        .testimonial-success {
+            background-color: #198754;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            display: none;
+            text-align: center;
+        }
+        body {
+            background-color: #86c2ff;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Floating bubbles */
+        .bubble {
+            position: absolute;
+            background-color: rgba(255, 255, 255, 0.4);
+            border-radius: 50%;
+            animation: floatBubble 5s infinite ease-in-out;
+        }
+
+        @keyframes floatBubble {
+            0% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-200px);
+
+
+            }
+
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        /* Rest of your existing styles */
+        .container {
+            padding-top: 50px;
+        }
+
+        .card {
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Welcome to our Car Wash Service!</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="text-center">
+                            <p>We appreciate your feedback and loyalty!</p>
+                            <a href="/TheCarSpa/Login/Booking/view-previous-orders"
+                                class="btn btn-primary btn-custom">View Previous Orders</a>
+                            <a href="/TheCarSpa/Login/Booking/checkout" class="btn btn-success btn-custom">Make a
+                                New Order</a>
+                        </div>
+                        <hr>
+
+                        <!-- Testimonial Form -->
+                        <div class="testimonial-form">
+                            <h4 class="text-center">Add Testimonial:</h4>
+
+                            <div class="text-align-center" id="hiddenDiv">
+                                <!-- Content of the hidden div -->
+                                Testimonial submitted successfully!
+                            </div>
+
+                            <form action="/TheCarSpa/Login/Booking/submit-testimonial" method="post">
+                                <div class="form-group">
+                                    <textarea class="form-control" id="testimonial" name="testimonial" rows="3"
+                                        placeholder="Enter your testimonial"></textarea>
+                                </div>
+                                <button type="submit"
+                                    class="btn btn-info btn-block testimonial-submit">Submit Testimonial</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        // Client-side JavaScript to check the value of displayDiv and display the hidden div if true
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+          const numberOfBubbles = 20;
+        for (let i = 0; i < numberOfBubbles; i++) {
+            createBubble();
+        }
+
+        function createBubble() {
+            const bubble = document.createElement('div');
+            bubble.classList.add('bubble');
+
+            const size = Math.floor(Math.random() * 40) + 10; // Random size between 10 and 50px
+            const left = Math.random() * window.innerWidth; // Random X position within the window width
+            const animationDelay = Math.random() * 5; // Random animation delay between 0 and 5s
+
+            bubble.style.width = `${size}px`;
+            bubble.style.height = `${size}px`;
+            bubble.style.left = `${left}px`;
+            bubble.style.animationDelay = `${animationDelay}s`;
+
+            document.body.appendChild(bubble);}
+    </script>
+</body>
+
+</html>

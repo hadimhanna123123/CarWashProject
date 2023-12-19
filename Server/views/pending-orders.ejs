@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML TABLE DATA SEARCH</title>
+    <style>
+      body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f3f6f8; /* Light blue-gray background */
+            color: #333; /* Dark text color */
+        }
+
+        h2 {
+            text-align: center;
+            margin-top: 20px;
+            color: #0080ff; /* Bright blue heading color */
+        }
+
+        p {
+            text-align: center;
+            color: #666; /* Grayish paragraph color */
+        }
+
+        table {
+            width: 75%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            border: 1px solid #ccc; /* Light gray border */
+            background-color: #fff; /* White table background */
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #0080ff; /* Bright blue heading background */
+            color: #fff; /* White text color */
+        }
+
+        tr:nth-child(even) {
+            background-color: #f0f7fa; /* Light blue-gray alternate row background */
+        }
+
+        form {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        /* Back button styles */
+        .back-button {
+            display: inline-block;
+            padding: 12px 24px;
+            font-size: 16px;
+            background-color: #00cc66; /* Vivid green button color */
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .back-button:hover {
+            background-color: #00b359; /* Darker green on hover */
+        }
+    </style>
+</head>
+<body>
+    <h2>HTML TABLE DATA SEARCH</h2>
+    <form action="/TheCarSpa/Login/Manager" method="get">
+        <table>
+            <thead>
+                <tr>
+                    <th>Car Make</th>
+                    <th>Phone Number</th>
+                    <th>Address</th>
+                    <th>Client Name</th>
+                    <th>Request Date</th>
+                    <th>Service Type</th>
+                    <th>ACCEPT REQUEST</th>
+
+
+
+                </tr>
+            </thead>
+            <tbody>
+                <% users.forEach(function(user){ %>
+                    <tr>
+                        <td><%= user.CarDetail %></td>
+                        <td><%= user.ClientPhone %></td>
+                        <td><%= user.ClientAddress %></td>
+                        <td><%= user.ClientName %></td>
+                        <td><%= user.BookingDate %></td>
+                        <td><%= user.ServiceTypeName %></td>
+                        
+                    <td>
+                        <!-- Button for action -->
+                        <form action="/TheCarSpa/Login/Manager/view-pending-orders/contactClient" method="post"> <!-- Replace with your actual route -->
+                            <input type="hidden" name="car_brand" value="<%= user.BookingId %>">
+                            <button type="submit" class="btn btn-primary">ACCEPT</button>
+                        </form>
+                    </td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+    </form>
+    <div style="text-align: center; margin-top: 20px;">
+        <a href="/TheCarSpa/Login/Manager" style="text-decoration: none;">
+            <button style="padding: 10px 20px; font-size: 16px; background-color: #3498db; color: #fff; border: none; border-radius: 4px; cursor: pointer;">Back to Manager Main Page</button>
+        </a>
+    </div>
+
+
+    <h3 style="text-align: center;">WHAT THIS PAGE DOES</h2>
+
+        <!-- Description text -->
+        <p style="text-align: center; font-size: 18px; color: #666; margin-bottom: 30px;">
+            This page allows you to confirm testimonials for the Car Wash Manager Interface. Review the available testimonials and change their availability status as needed.
+        </p>
+        
+</body>
+</html>

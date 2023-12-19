@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>HTML TABLE DATA SEARCH</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border: 1px solid #ddd;
+            background-color: #fff;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f5f5f5;
+            font-weight: bold;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .action-btn {
+            display: flex;
+            justify-content: center;
+        }
+
+        .btn {
+            padding: 6px 12px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Testimonials Pending Approval</h2>
+    <form action="/TheCarSpa/Login/Manager/confirm-testimonials" method="POST">
+        <table>
+            <tr>
+                <th>TestimonialId</th>
+                <th>Client Name</th>
+                <th>TestimonialContent</th>
+                <th>Action</th>
+            </tr>
+            <% users.forEach(function(user){ %>
+            <tr>
+                <td><%= user.TestimonialId %></td>
+                <td><%= user.ClientName %></td>
+                <td><%= user.TestimonialReview %></td>
+                <td class="action-btn">
+                    <form action="/TheCarSpa/Login/Manager/confirm-testimonials" method="post">
+                        <input type="hidden" name="testimonial_id" value="<%= user.TestimonialId %>">
+                        <input type="hidden" name="client_name" value="<%= user.ClientName%>">
+                        <input type="hidden" name="testimonial_content" value="<%= user.TestimonialReview%>">
+                        <button type="submit" class="btn btn-primary">Confirm Testimonial</button>
+                    </form>
+                </td>
+            </tr>
+            <% }); %>
+        </table>
+    </form>
+
+    <h3 style="text-align: center;">WHAT THIS PAGE DOES</h2>
+
+        <!-- Description text -->
+        <p style="text-align: center; font-size: 18px; color: #666; margin-bottom: 30px;">
+            This page allows you to confirm testimonials for the Car Wash Manager Interface. Review the available testimonials and change their availability status as needed.
+        </p>
+</body>
+
+</html>
