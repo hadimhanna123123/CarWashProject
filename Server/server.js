@@ -116,7 +116,7 @@ app.post("/TheCarSpa/Login", checkNotAuthenticated, passport.authenticate('local
     failureFlash: true
 }),
     (req, res) => {
-        res.redirect(manager == 1 ? "/TheCarSpa/Login/Manager" : "/TheCarSpa/Login/Booking");
+        res.redirect(307, manager == 1 ? "/TheCarSpa/Login/Manager" : "/TheCarSpa/Login/Booking");
     }
 );
 
