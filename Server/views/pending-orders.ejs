@@ -101,7 +101,10 @@
                     <td>
                         <!-- Button for action -->
                         <form action="/TheCarSpa/Login/Manager/view-pending-orders/contactClient" method="post"> <!-- Replace with your actual route -->
-                            <input type="hidden" name="car_brand" value="<%= user.BookingId %>">
+                            <input type="hidden" name="BookingId" value="<%= user.BookingId %>">
+                            <input type="hidden" name="ClientPhone" value="<%= user.ClientPhone %>">
+                            <input type="hidden" name="ClientId" value="<%= user.ClientId %>">
+
                             <button type="submit" class="btn btn-primary">ACCEPT</button>
                         </form>
                     </td>

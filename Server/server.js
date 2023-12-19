@@ -401,13 +401,16 @@ app.get('/TheCarSpa/Login/Manager/view-pending-orders', async (req, res) => {
 })
 
 app.post('/TheCarSpa/Login/Manager/view-pending-orders/contactClient', async (req, res) => {
-    const { booking_id, client_id, client_address, car_brand, car_make, phone_number, booking_date, service_type } = req.body; // Get values from form submission
+    /*const { booking_id, client_id, client_address, car_brand, car_make, phone_number, booking_date, service_type } = req.body; // Get values from form submission
     var [client_name] = await connection.query(`select name from clients where id=12`, [client_id]);
     const client_name1 = client_name[0].name
     console.log(client_name1)
-    const whatsapp_link = "https://wa.me/" + phone_number;
+    const whatsapp_link = "https://wa.me/" + phone_number;*/
+    const{BookingId,ClientPhone,ClientId}=req.body;
+    console.log(BookingId,ClientPhone,ClientId)
+    //var [client_name] = await connection.query(`select name from clients where id=12`, [client_id]);
 
-    res.render('contact-client.ejs', { whatsapp_link, client_name1 }); // Redirect back to the previous-orders page or another route
+    //res.render('contact-client.ejs', { whatsapp_link, client_name1 }); // Redirect back to the previous-orders page or another route
 
 
 
