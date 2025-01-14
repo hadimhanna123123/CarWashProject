@@ -64,7 +64,7 @@ const app = express();
 const connection = await mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    password: 'HadiAliAdam128!',
+    password: '.....',
     database: 'cleaningservicemanagementsystem' // Specify the database name
 });
 
